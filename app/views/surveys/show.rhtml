@@ -1,0 +1,42 @@
+<script type="text/javascript" language="javascript">
+function check_vote() {
+	try {
+		var selection = document.vote.vote;
+		for (var i = 0; i < selection.length; ++i) {
+			if (selection[i].checked) {
+				return true;
+			}
+		}
+	} catch (err){alert("erreur : " + err);}
+	alert("<%= t("surveys.choose_answer") %>");
+	return false;
+}
+</script>
+<p id="notice"><i><%= notice %></i></p>
+<p>
+	<b><%= t("surveys.title") %> : </b><%= @survey.title %><br/>
+	<b><%= t("surveys.description") %> : </b><%= @survey.description %>
+</p>
+<p><b><%= t("surveys.response_list") %> : </b></p>
+<%= form_tag({:controller => "surveys", :action => "vote", :method => "post"}, {:name => "vote", :onSubmit => "return check_vote();"}) do %>
+<%= hidden_field_tag(:survey_id, @survey.survey_id) %>
+<table class="survey_table">
+<% @answers.each do |a| %>
+<tr>
+	<td><%= a.answer %></td>
+	<td><div class="vote_gauge"><div class="vote_gauge_progress" style="width: <%= a.response_ratio %>%">&nbsp;</div></div></td>
+	<td><%= a.response_count %></td>
+	<% if not @has_answered  and not @has_expired %>
+	<td><input type="radio" name="vote" value="<%= a.answer_id %>"/></td>
+	<% end %>	
+</tr>
+<% end %>
+</table>
+<br/>
+
+<% if not @has_answered and not @has_expired %>
+<input type="submit" value="<%= t("surveys.vote") %>"/><br/>
+<% end %>
+<% end %>
+<% if not current_user.nil? and @survey.user_id == current_user.user_id and @nbr_of_answers == 0 %><%= link_to t("surveys.edit"), edit_survey_path(@survey) %> | <% end %>
+<%= link_to t("navigation.back"), surveys_path %>

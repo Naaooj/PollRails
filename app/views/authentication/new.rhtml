@@ -1,0 +1,30 @@
+<%= form_for(@user, :url => {:controller => "authentication", :action => "new"}) do |f| %>
+
+<% if !@user.errors.empty? %>
+<div id="error_explanation">
+	<% @user.errors.each do |key, value| %>
+	<b><%= t(key) %></b>&nbsp;<%= value %><br/>
+	<% end %>
+</div>
+<% end %>
+<table>
+	<tr>
+		<td><%= t("lastname") %></td><td><%= f.text_field(:lastname) %></td>
+	</tr>
+	<tr>
+		<td><%= t("firstname") %><td><%= f.text_field(:firstname) %></td>
+	</tr>
+	<tr>
+		<td><%= t("password") %></td><td><%= f.password_field(:password) %></td>
+	</tr>
+	<tr>
+		<td><%= t("password_check") %></td><td><%= f.password_field(:password_check) %></td>
+	</tr>
+	<tr>
+		<td><%= t("email") %></td><td><%= f.text_field(:email) %></td>
+	</tr>
+	<tr>
+		<td><%= submit_tag(t("create"))%></td><td></td>
+	</tr>
+</table>
+<% end %>

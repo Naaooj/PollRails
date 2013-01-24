@@ -1,0 +1,41 @@
+<% if flash[:notice] %>
+<%= flash[:notice] %><br/>
+<% end %>
+
+<p><%= link_to t("surveys.view_all"), :controller => "surveys" %></p>
+
+<% if not @survey.nil? %>
+<p><b><%= t("surveys.last_survey") %> :</b></p>
+<div id="random_survey">
+<p>
+	<%= @survey.title %><br/>
+	<%= @survey.description %><br/>
+</p>
+<table class="survey_table">
+<% @answers.each do |a| %>
+<tr>
+	<td><%= a.answer %></td><td><div class="vote_gauge"><div class="vote_gauge_progress" style="width: <%= a.response_ratio %>%">&nbsp;</div></div></td><td><%= a.response_count %></td>
+</tr>
+<% end %>
+</table>
+<% if @has_expired %>
+<i><%= t("surveys.expired") %></i>
+<% end %>
+</div>
+
+<script type="text/javascript" language="javascript">
+/*setInterval(function() {
+	$('#random_survey').fadeOut(600, function() {
+		$.get('random', 
+			  function(data) {
+				$('#random_survey').fadeIn(600);
+			  }, 
+			  null, 
+			  'script');
+	});
+}, 5000);*/
+</script>
+
+<% else %>
+<%= t("survey.no_survey") %>
+<% end %>

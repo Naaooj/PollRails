@@ -1,0 +1,154 @@
+body { background-color: #fff; color: #333; }
+
+body, ol {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  text-align: center;
+}
+
+body {
+	background-color: #454545;
+	margin-top: 16px;	
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { 
+	color: #cfcfcf;
+}
+a:visited { 
+	color: #cfcfcf;
+}
+a:hover { 
+	color: #fff; 
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* Conteneur principale du site */
+#site_container {
+	margin: 0 auto;
+	width: 900px;
+	text-align: left;
+	color: white;
+	background-color: #730000;
+	border: 2px solid white;
+	-moz-border-radius:0px 0px 5px 5px;
+	-webkit-border-radius:0px 0px 5px 5px;
+	border-radius:0px 0px 5px 5px;
+}
+
+/* Conteneur d'identification et d'information de connexion */
+#top_container {
+	text-align: left;
+	padding: 6px;
+	position: relative;
+	border-bottom: 1px solid white;
+}
+
+/* Logo de rails présent dans le conteneur supérieur */
+#top_container_logo {
+	cursor: pointer;
+}
+
+/* Conteneur de la barre supérieur */
+#top_container_content {
+	position: absolute;
+	left: 60px;
+	top: 4px;
+	height: 64px;
+}
+
+#top_container_language {
+	position: absolute;
+	top: 1px;
+	right: 4px;
+	height: 64px;
+}
+
+/* Conteneur de bas de page */
+#bottom_right_container {
+	position: relative;
+	text-align: right;
+	width: 100%;
+}
+
+/* Conteneur absolu accueillant une petite image pour rendre le site zoli */
+#bottom_right_floating_container {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+}
+
+/* Fixe la taille du diaman rails */
+#diamond {
+	width: 26px;	
+}
+
+/* Contenu du site rempli par rails */
+#content {
+	padding: 6px;
+}
+
+table.survey_table,
+table.survey_table td {
+	text-align: left;
+}
+
+div.vote_gauge {
+	height: 16px;
+	background-color: #470000;
+	border: 1px solid black;
+	width: 140px;
+	position: relative;
+}
+
+div.vote_gauge_progress {
+	background-color: #fff;
+	height: 100%;
+}
+
+div.vote_gauge_value {
+	color: white;
+}
+
+#notice {
+  color: #fff;
+}
+
+.field_with_errors {
+  padding: 1px;
+  background-color: #4f4f4f;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 1px solid white;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #4f4f4f;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #4f4f4f;
+  color: #000;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

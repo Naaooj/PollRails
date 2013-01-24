@@ -1,0 +1,96 @@
+fr:
+  formular:
+    validate: "valider"
+
+  titles:
+    home: "Accueil"
+    surveys: "Sondages"
+    edit: "Edition"
+    new: "Nouveau"
+    create_account: "Création d'un compte"
+
+  navigation:
+    welcome: "Bienvenue"
+    disconnect: "Déconnexion"
+    back: "Retour"
+
+  notices:
+    logged: "Vous êtes bien connecté"
+    survey_thank: "Merci de votre participation"
+    survey_created: "Le sondage a bien été créé"
+    survey_updated: "Le sondage a bien été mis à jour"
+    vote_failed: "Oops, impossible de sauvegarder votre vote"
+
+  surveys:
+    last_survey: "Dernier sondage"
+    view_all: "Voir les sondages"
+    surveys_list: "Liste des sondages"
+    response_list: "Liste des réponses"
+    new_survey: "Nouveau sondage"
+    creating_survey: "Création d'un sondage"
+    editing_survey: "Edition d'un sondage"
+    no_survey: "Aucun sondage"
+    actions: "Actions"
+    not_valid: "Le formulaire comporte les erreurs suivantes"
+    choose_answer: "Veuillez choisir une réponse"
+    expired: "Le sondage est terminé"
+    new: "Créer"
+    view: "Voir"
+    edit: "Editer"
+    delete: "Supprimer"
+    update: "Modifier"
+    title: "Titre"
+    description: "Description"
+    end_date: "Date de fin"
+    add_answer: "Ajouter une réponse"
+    vote: "Voter"
+    answer: "Réponse"
+    two_ans_at_least: "Il doit y avoir au moins 2 reponses"
+    confirm_delete: "Etes-vous sûr?"
+
+  account:
+    connect: "Connecter" 
+    new_account: "Nouveau compte"
+    connect_with_google: "Connexion via Google"
+    please_connect: "Veuillez vous connecter"
+    connected: "Connecté"
+    wrong_data: "Mauvais email ou mot de passe"
+    created: "Votre compte vient d'être créé, vous pouvez vous connecter"
+
+  error: "erreur"
+  firstname: "Nom"
+  lastname: "Prénom"
+  password: "Mot de passe"
+  email: "Email"
+  create: "Créer"
+  password_check: "Vérification"
+  passwords_are_differents: "Les mots de passes sont différents"
+
+  activerecord:
+    attributes:
+      survey:
+        title: "Titre"
+        description: "Description"
+        end_at: "Date de fin"
+        answer: ""
+      answer:
+        answer: "Réponse"
+    errors:
+      messages:
+        record_invalid: "données invalides"
+      models:
+        user:
+          blank: "doit être renseigné"
+          attributes:
+            email:
+              invalid: "ne respecte pas la forme d'un mail"
+              taken: "utilisé, prière de choisir une autre adresse"
+            password_check:
+              different: "ne correspond pas au mot de passe"
+        survey:
+          blank: "doit être renseigné"
+          attributes:
+            end_at:
+              invalid: "ne respecte pas la forme jj/mm/aaaa"
+        answer:
+          blank: "doit être renseigné"

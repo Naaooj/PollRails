@@ -1,0 +1,23 @@
+<h1><%= t("surveys.surveys_list") %></h1>
+
+<table>
+  <tr>
+	<th><%= t("surveys.title") %></th>
+    <th><%= t("surveys.actions") %></th>
+	<% unless current_user.nil? %>
+    <th></th>
+    <th></th>
+	<% end %>
+  </tr>
+
+<% @surveys.each do |survey| %>
+  <tr>
+	<td><%= survey.title %></td>
+    <td><%= link_to t("surveys.view"), survey %></td>    
+	<td><% if not current_user.nil? and current_user.user_id == survey.user_id and survey.is_editable %><%= link_to t("surveys.edit"), edit_survey_path(survey) %><% end %></td>
+    <td><% if not current_user.nil? and current_user.user_id == survey.user_id %><%= link_to t("surveys.delete"), survey, :confirm => t("surveys.confirm_delete"), :method => :delete %><% end %></td>	
+  </tr>
+<% end %>
+</table>
+
+<br />

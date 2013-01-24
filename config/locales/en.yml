@@ -1,0 +1,96 @@
+en:
+  formular:
+    validate: "validate"
+
+  titles:
+    home: "Home"
+    surveys: "Surveys"
+    edit: "Edition"
+    new: "New"
+    create_account: "Create a new account"
+
+  navigation:
+    welcome: "Welcome"
+    disconnect: "Disconnect"
+    back: "Back"
+
+  notices:
+    logged: "You are now logged in"
+    survey_thank: "Thanks for your participation"
+    survey_created: "Survey has been created"
+    survey_updated: "Survey has been updated"
+    vote_failed: "Oops, unable to save your answer"
+
+  surveys:
+    last_survey: "Dernier sondage"
+    view_all: "View all surveys"
+    surveys_list: "Surveys list"
+    response_list: "Answers list"
+    new_survey: "New survey"
+    creating_survey: "Create a survey"
+    editing_survey: "Edit a survey"
+    no_survey: "No survey"
+    actions: "Actions"
+    not_valid: "Formular contains some errors"
+    choose_answer: "Please choose one answer"
+    expired: "Survey is closed"
+    new: "Create"
+    view: "View"
+    edit: "Edit"
+    delete: "Delete"
+    update: "Modify"
+    title: "Title"
+    description: "Description"
+    end_date: "Ending date"
+    add_answer: "Add an answer"
+    vote: "Vote"
+    answer: "Answer"
+    two_ans_at_least: "2 answers at least"
+    confirm_delete: "Are you sure?"
+
+  account:
+    connect: "Connect" 
+    new_account: "New account"
+    connect_with_google: "Connect with google"
+    please_connect: "Please identify yourself"
+    connected: "Connected"
+    wrong_data: "Wrong email or password"
+    created: "Your account is created, you can now log in"
+
+  error: "error"
+  firstname: "Firstname"
+  lastname: "Lastname"
+  password: "Password"
+  email: "Email"
+  create: "Create"
+  password_check: "Retype password"
+  passwords_are_differents: "Passwords are differents"
+
+  activerecord:
+    attributes:
+      survey:
+        title: "Title"
+        description: "Description"
+        end_at: "Ending date"
+        answer: ""
+      answer:
+        answer: "Answer"
+    errors:
+      messages:
+        record_invalid: "data not valid"
+      models:
+        user:
+          blank: "should be filled"
+          attributes:
+            email:
+              invalid: "doesn't respect email format"
+              taken: "already used, please choose an other one"
+            password_check:
+              different: "doesn't not correspond to password"
+        survey:
+          blank: "should be filled"
+          attributes:
+            end_at:
+              invalid: "do not respect dd/mm/yyyy format"
+        answer:
+          blank: "should be filled"

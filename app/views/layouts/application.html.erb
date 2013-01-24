@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title>Poll - <%= @page_title %></title>
+  	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag 'jquery', 'application' %>
+ 	<%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="site_container">
+	
+	<div id="top_container">
+		<div id="top_container_logo"><%= image_tag("rails.png", :onClick => "location.href='" + url_for(:controller => "home") + "';", :style=>"") %></div>
+		<div id="top_container_content">
+		<% if is_logged %>
+		<%= t("navigation.welcome") + " " + current_user.username %><br/>
+		<%= link_to t("surveys.new_survey"), :controller => "surveys", :action => "new" %></br/>
+  		<%= link_to t("navigation.disconnect"), signout_path %>
+		<% else %>
+		<!-- Putin de form_tag... le do à la fin je l'oublie toujours, 
+		ce qui génère une erreur daubesque de fermeture de bloque foireuse -->
+		<%= form_tag(:controller => "authentication", :action => "login", :method => "get") do %>
+			<%= text_field(:user, "login_email", :value => "Email") %>
+			<%= password_field(:user, "login_password", :value => "Password" ) %>
+			<%= submit_tag(t("account.connect")) %>
+		<% end %>
+		<%= link_to t("account.new_account"), :controller => "authentication", :action => "new" %><br/>
+		<%= link_to t("account.connect_with_google"), "/auth/google?locale="+I18n.locale.to_s %>
+		<% end %>
+		</div>
+		<div id="top_container_language">
+		<% if I18n.locale == 'en'.to_sym %>
+		<%= image_tag("fr.png", :onClick => "location.href='" + url_for(:controller => "home", :locale => "fr") + "';", :style=>"cursor: pointer") %>
+		<% else %>
+		<%= image_tag("gb.png", :onClick => "location.href='" + url_for(:controller => "home", :locale => "en") + "';", :style=>"cursor: pointer") %>
+		<% end %>
+		</div>
+	</div>
+
+	<div id="content">
+	<%= yield %>
+	</div>
+
+	<div id="bottom_right_container">
+		<div id="bottom_right_floating_container">
+			<%= image_tag("diamond.png", :id => "diamond") %>
+		</div>
+	</div>
+</div>
+<div>&copy; <%= Time.now.year %> - CTG Tech4Cast</div>
+</body>
+</html>

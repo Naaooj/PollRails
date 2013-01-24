@@ -1,0 +1,13 @@
+<% if params["auth"] %>
+	<%= form_tag(:controller => "authentication", :action => "validate", :method => "post") do %>
+    <%= hidden_field_tag(:provider, params["auth"]["provider"]) %>
+	<%= hidden_field_tag(:uid, params["auth"]["uid"]) %>
+	<%= hidden_field_tag(:username, params["auth"]["user_info"]["name"]) %>
+	<%= hidden_field_tag(:email, params["auth"]["user_info"]["email"]) %>
+	Bonjour <%= params["auth"]["user_info"]["name"] %>, vous ne disposez pas encore de compte.
+	Pour terminer le processus d'inscription, cliquez sur <%= submit_tag("valider") %>
+	<% end %>
+<% else %>
+	<p>Il semble qu'il y ait un problème d'authentification avec OpenID.</p>
+	<p>Si vous le souhaitez, vous pouvez toujours créer un compte sans utiliser OpenID en <% link_to("cliquant ici", :controller =>"authenticaton", :action=>"new") %>.</p>
+<% end %>

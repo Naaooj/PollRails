@@ -1,0 +1,88 @@
+<script type="text/javascript" language="javascript">
+	var count = <% if not @answers.nil? %><%= @answers.size %><% else %>0<% end%>;
+	function add_answer() {
+		var st = document.getElementById("survey_table");
+		var nbrOfRows = st.rows.length;
+		// Ajout d'une ligne
+		var row = st.insertRow(nbrOfRows);
+
+		// Colonne de gauche
+		var lc = row.insertCell(0);
+		var lt = document.createTextNode("<%= t("surveys.answer") %>");
+		lc.appendChild(lt);
+		// Colonne de droite
+		var rc = row.insertCell(1);
+		var ri = document.createElement("input");
+		ri.type = 'text';
+		ri.name = 'answers[ans'+count+']';
+		ri.size = 30;
+		rc.appendChild(ri);
+		count++;
+	}
+</script>
+<%= form_for(@survey, :html => {:title => "survey"}) do |f| %>
+<% if @survey.errors.any? or @has_error %>
+<div id="error_explanation">
+	<h2><%= t("surveys.not_valid") %> :</h2>
+	<ul>
+		<% @survey.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+		<% if not @answers.nil? %>
+		<% @answers.each do |a| %>
+		<% if a.errors.any? %>
+			<% a.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		<% end %>
+		<% end %>
+	</ul>
+	<% end %>
+</div>
+<% end %>
+
+<div class="actions" id="survey_content">
+	<table id="survey_table">
+		<tr>
+			<td><%= t("surveys.title") %></td>
+			<td><%= f.text_field(:title) %></td>
+		</tr>
+		<tr>
+			<td><%= t("surveys.description") %></td>
+			<td><%= f.text_field(:description) %></td>
+		</tr>
+		<% if not @answers.nil? %>
+		<% @answers.each_with_index do |a, index| %>
+		<tr>
+			<td><%= t("surveys.answer") %></td>
+			<td>
+			<% if a.errors.any? %>
+			<div class="field_with_errors">
+			<% end %>
+			<% if params[:action] == 'new' or params[:action] == 'create' or a.survey_id == -1 %>
+			<input type="text" name="answers[ans<%= index %>]" value="<%= a.answer %>" size="30"/><br/>
+			<% else %>
+			<input type="text" name="answer[<%= a.answer_id %>]" value="<%= a.answer %>" size="30"/><br/>
+			<% end %>
+			<% if a.errors.any? %>
+			</div>
+			<% end %>
+			</td>
+		</tr>
+		<% end %>
+		<% end %>
+	</table>
+</div>
+<% if params[:action] == 'new' or params[:action] == 'create' or @nbr_of_answers == 0 %>
+<input type="button" onClick="add_answer();" value="<%= t("surveys.add_answer") %>"/>
+<% end %>
+<% if params[:action] == 'edit' or params[:action] == 'update' %>
+<%= f.submit(t("surveys.update")) %>
+<% else %>
+<%= f.submit(t("surveys.new")) %>
+<% end %>
+<% end %>
